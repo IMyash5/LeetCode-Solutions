@@ -1,15 +1,32 @@
+/* 
+Complexity analysis
+- Time Complexity: O(n)
+- Space Complexity: O(1)
+*/
+
 package Arrays;
 
-public class CountItemsMatchingRule {
-    public int countMatches(String[][] items, String ruleKey, String ruleValue) {
+import java.util.List;
+
+class CountItems {
+    public int countMatches(
+        List<List<String>> items,
+        String ruleKey,
+        String ruleValue
+    ) {
+        int index = 0;
+
+        if (ruleKey.equals("color")) index = 1;
+        else if (ruleKey.equals("name")) index = 2;
+
         int count = 0;
-        for (String[] item : items) {
-            if ((ruleKey.equals("type") && item[0].equals(ruleValue)) ||
-                (ruleKey.equals("color") && item[1].equals(ruleValue)) ||
-                (ruleKey.equals("name") && item[2].equals(ruleValue))) {
+
+        for (List<String> item : items) {
+            if (item.get(index).equals(ruleValue)) {
                 count++;
             }
         }
+
         return count;
     }
 }
